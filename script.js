@@ -42,32 +42,3 @@ input.addEventListener("input", (event) => {
 
 // particle js configuration
 particlesJS.load("particles-js", "particles.json");
-
-const addUserButton = document.querySelector(".controls img");
-
-addUserButton.addEventListener("click", () => {
-  const username = prompt("Enter your username");
-  const email = prompt("Enter your email");
-
-  const newUser = {
-    username,
-    email,
-  };
-
-  fetch(`${url}/adddata`, {
-    method: "POST",
-    body: JSON.stringify(newUser),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((data) => data.json())
-    .then((result) => {
-      usersArray = result;
-      createCardList(result);
-    })
-    .catch((error) => {
-      console.log(error);
-      alert("User not added");
-    });
-});
