@@ -46,24 +46,17 @@ particlesJS.load("particles-js", "particles.json");
 const addUserButton = document.querySelector(".controls img");
 
 addUserButton.addEventListener("click", () => {
-  const username = prompt("enter your username");
-  const email = prompt("enter your email");
+  const username = prompt("Enter your username");
+  const email = prompt("Enter your email");
 
   const newUser = {
     username,
     email,
   };
 
-  const secretKey = prompt("enter secret key");
-
-  const bodyData = {
-    newUser,
-    secretKey,
-  };
-
   fetch(`${url}/adddata`, {
     method: "POST",
-    body: JSON.stringify(bodyData),
+    body: JSON.stringify(newUser),
     headers: {
       "Content-Type": "application/json",
     },
